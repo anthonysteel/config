@@ -1,5 +1,7 @@
-set nocompatible
+" pet nocompatible
 filetype off
+
+hi Normal guibg=NONE ctermbg=NONE
 
 " set the runtime path to include Vundle and intialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,11 +11,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe' "syntactic completion for vim
 Plugin 'terryma/vim-multiple-cursors' "multiple cursors ala sublime
 Plugin 'airblade/vim-gitgutter' "shows git diff to the left of line numbers
+Plugin 'scrooloose/nerdtree' "system file explorer
 Plugin 'pangloss/vim-javascript'
 Plugin 'chemzqm/vim-jsx-improve'
 Plugin 'vim-airline/vim-airline'
 Plugin 'altercation/vim-colors-solarized' "solarized syntax highlighting
-Plugin 'AtsushiM/sass-compile.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'heavenshell/vim-jsdoc'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -32,7 +37,7 @@ set relativenumber "show relative line numbers
 set showcmd "show command in bottom bar
 set wildmenu "visual autocomplete
 set lazyredraw "redraw only when needed
-set colorcolumn=72
+set colorcolumn=80
 " Change tabs to be 2 spaces for html files
 au FileType html setl sw=2 ts=2 et
 "vim-airline config
@@ -42,25 +47,36 @@ let g:ariline#extensions#tabline#fnamemod = ':t'
 set hidden
 "new buffer tab
 nmap <C-t> :enew<CR>
-"save buffer
-nmap <C-s> :w<CR>
 "new buffer
-nmap <C-n> :badd 
+nmap <C-o> :badd 
 "move to next buffer
-nmap <C-l> :bnext<CR>
+nmap <C-f> :bnext<CR>
 "move to previous buffer
-nmap <C-h> :bprevious<CR>
+nmap <C-d> :bprev<CR>
 "close current buffer
-nmap <C-w> :bp <BAR> bd #<CR>
+nmap <C-x> :bd<CR>
 "show all buffers and their status
 nmap <C-b><C-l> :ls<CR>
+
+"nerd tree open
+map <C-t> :NERDTreeToggle<CR>
+"open nerd tree if no file is specified upon opening vim
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"closing vim if the only window left open is nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"shortcuts for vim splits
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+
 "searching
 set incsearch "search as characters appear
 set hlsearch "highlight matches
 nnoremap <leader><space> :nohlsearch<CR>
-"macros
-map <C-O> O
-map <C-o> o
+
 "git commit text wrapping
 au FileType gitcommit set tw=72
 "set paste allows pasting from clip board
@@ -74,4 +90,3 @@ nnoremap jsd :<C-u>call JSDocAdd()<CR>
 
 " Turn off highlighting after searching
 nnoremap i :noh<cr>i
-

@@ -36,5 +36,6 @@ parse_git_dirty () {
 parse_git_branch () {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
-
-#PS1="\[${BOLD}${MAGENTA}\]\u \[$MAGENTA\]@ \[$ORANGE\]\h \[$MAGENTA\]: \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$ \[$RESET\]"
+#\e[37m
+#PS1="\[${BOLD}${MAGENTA}\]\u\[$MAGENTA\]@\[$ORANGE\]\h\[$MAGENTA\]:\[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\$\[$RESET\]"
+PS1="\[${BOLD}${MAGENTA}\]\u\[$MAGENTA\]@\[$ORANGE\]\h:\[$RESET\]\[$BOLD\]\W\[$ORANGE\]\n\[$RESET\]$ "

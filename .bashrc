@@ -1,4 +1,6 @@
 # Add Homebrew `/usr/local/bin` and User `~/bin` to the `$PATH`
+export EDITOR=vim
+
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/bin:$PATH
 export PATH
@@ -42,6 +44,4 @@ if [ -f ~/.git-completion.bash ]; then
              echo "'$1' is not a valid file"
          fi
     }
-
-
 
