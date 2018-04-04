@@ -1,6 +1,6 @@
+# Map caps-lock to control
 setxkbmap -layout us -option ctrl:nocaps
 
-source /usr/local/bin/virtualenvwrapper.sh
 # Add Homebrew `/usr/local/bin` and User `~/bin` to the `$PATH`
 export EDITOR=vim
 
