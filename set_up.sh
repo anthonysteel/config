@@ -66,11 +66,11 @@ fi
 
 sudo apt-get install -y build-essential
 
-sudo apt-get install rubygems-integration
+sudo apt-get install ruby 
 if [ $? -eq 0 ]; then
-    echo "gems installed"
+    echo "ruby installed"
 else
-    echo "gems failed to install"
+    echo "ruby failed to install"
     #exit 1
 fi
 
