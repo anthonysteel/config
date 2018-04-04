@@ -61,8 +61,6 @@ else
     echo "virtualenvwrapper failed to install"
 fi
 
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get install -y nodejs
 if [ $? -eq 0 ]; then
     echo "nodejs installed"
 else
@@ -76,6 +74,8 @@ else
     echo "ruby failed to install"
     #exit 1
 fi
+
+sudo apt-get install tmux
 
 gem install tmuxinator
 if [ $? -eq 0 ]; then
@@ -105,3 +105,5 @@ sudo apt-get install dconf-cli
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 cd gnome-terminal-colors-solarized
 ./install.sh
+
+sudo apt-get install fonts-powerline
