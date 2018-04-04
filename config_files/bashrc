@@ -1,3 +1,4 @@
+source /usr/local/bin/virtualenvwrapper.sh
 # Add Homebrew `/usr/local/bin` and User `~/bin` to the `$PATH`
 export EDITOR=vim
 
@@ -13,15 +14,10 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done
 unset file
 
-# added by Anaconda3 2.4.1 installer
-export PATH="/Users/anthonysteel/anaconda/bin:$PATH"
-export LD_LIBRARY_PATH=/Users/anthonysteel/anaconda/lib
-
-
 # autocompletion in git
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
-  fi
+fi
 
 #extract most known archive formats
     extract () {
@@ -45,3 +41,5 @@ if [ -f ~/.git-completion.bash ]; then
          fi
     }
 
+export VIRTUALENVWRAPPER_PYTHON='python3'
+source '/usr/local/bin/virtualenvwrapper.sh' 

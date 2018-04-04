@@ -18,9 +18,6 @@ alias qfind="find . -name "
 
 alias mux="tmuxinator"
 
-# Use MacVim
-alias vim="mvim -v"
-
 # git short forms
 alias ga='git add'
 alias gaa='git add .'
@@ -36,7 +33,7 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcom='git checkout master'
 alias gcos='git checkout staging'
-alias gcod='git checkout develop'
+alias gcod='git checkout development'
 alias gd='git diff'
 alias gda='git diff HEAD'
 alias gi='git init'
