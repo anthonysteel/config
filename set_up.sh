@@ -6,6 +6,11 @@ else
     #exit 1
 fi
 
+sudo add-apt-repository main
+sudo add-apt-repository universe
+sudo add-apt-repository restricted
+sudo add-apt-repository multiverse
+
 sudo apt-get install vim
 if [ $? -eq 0 ]; then
     echo "vim installed"
