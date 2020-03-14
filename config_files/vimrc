@@ -1,29 +1,24 @@
-" pet nocompatible
-filetype off
-
+set nocompatible
 hi Normal guibg=NONE ctermbg=NONE
 
 " set the runtime path to include Vundle and intialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Vundle required
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe' "syntactic completion for vim
-Plugin 'terryma/vim-multiple-cursors' "multiple cursors ala sublime
-Plugin 'airblade/vim-gitgutter' "shows git diff to the left of line numbers
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'chemzqm/vim-jsx-improve'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized' "solarized syntax highlighting
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'octol/vim-cpp-enhanced-highlight'
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/vim-easy-align'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'taketwo/vim-ros'
+Plug 'vim-scripts/ZoomWin'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'leafgarland/typescript-vim'
+call plug#end()
 
-
-call vundle#end()
-filetype plugin indent on
 "colors
 syntax enable
 set background=dark
@@ -40,10 +35,8 @@ set autoindent
 set relativenumber "show relative line numbers
 set showcmd "show command in bottom bar
 set wildmenu "visual autocomplete
-set lazyredraw "redraw only when needed
 set colorcolumn=80
-" Change tabs to be 2 spaces for html files
-au FileType html setl sw=2 ts=2 et
+
 "vim-airline config
 let g:airline_powerline_fonts = 1
 "let g:airline#extensions#tabline#enabled = 1
@@ -72,7 +65,9 @@ nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
+
 nnoremap ; :w<cr>  
+nnoremap <silent> <C-w>w :ZoomWin<CR>
 
 "searching
 set incsearch "search as characters appear
@@ -84,11 +79,10 @@ au FileType gitcommit set tw=72
 "set paste allows pasting from clip board
 set pastetoggle=<C-v>
 
-" Add JSX highlighting to non-JSX files
-let g:jsx_ext_required = 0
-
-" Create a mapping for js docs
-nnoremap jsd :<C-u>call JSDocAdd()<CR>
-
 " Turn off highlighting after searching
 nnoremap i :noh<cr>i
+
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
+filetype plugin indent on
+" autocmd FileType urdf setlocal shiftwidth=2 tabstop=2
